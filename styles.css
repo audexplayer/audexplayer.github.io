@@ -590,3 +590,9 @@ section{ padding:var(--space-9) 0; }
 .btn-danger:hover{ filter:brightness(1.08); }
 .del-back-link{ display:inline-block; margin-top:10px; font-size:14px; color:var(--on-bg-muted); }
 .del-back-link:hover{ color:var(--coral); }
+
+/* Official Google Play badge (includes its own required clear space) */
+.play-badge{display:inline-block;line-height:0;margin:-9px -12px;transition:transform .15s}
+.play-badge:hover{transform:translateY(-1px)}
+.play-badge img{height:76px;width:auto;display:block}
+.btn-row .play-badge{align-self:center}
