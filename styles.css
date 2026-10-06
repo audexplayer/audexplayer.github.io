@@ -596,3 +596,6 @@ section{ padding:var(--space-9) 0; }
 .play-badge:hover{transform:translateY(-1px)}
 .play-badge img{height:76px;width:auto;display:block}
 .btn-row .play-badge{align-self:center}
+
+.phone-screen.shot{ padding:0; aspect-ratio:1/2; }
+.phone-screen.shot img{ display:block; width:100%; height:100%; object-fit:cover; }
