@@ -120,6 +120,10 @@ p{ color:var(--on-bg-muted); font-weight:500; margin:0; }
 .brand{ display:flex; align-items:center; gap:10px; font-weight:800; font-size:18px; letter-spacing:-0.01em; color:var(--on-bg); flex-shrink:0; }
 .brand .mark{ width:30px; height:30px; flex-shrink:0; border-radius:8px; }
 .brand .word{ display:inline-flex; }
+.word{ direction:ltr; unicode-bidi:isolate; }
+/* Commands and file names read left to right on the Arabic pages too. */
+pre{ direction:ltr; text-align:left; }
+code{ direction:ltr; unicode-bidi:isolate; }
 .brand .x{ color:var(--coral); }
 .main-nav{ display:flex; align-items:center; gap:2px; flex:1; justify-content:center; }
 .main-nav a{
@@ -436,7 +440,7 @@ section{ padding:var(--space-9) 0; }
 .price-figure{ font:800 64px var(--font); letter-spacing:-0.03em; color:var(--on-bg); line-height:1; }
 .price-figure sup{ font-size:26px; top:-24px; }
 .price-note{ font:600 14px var(--font); color:var(--on-bg-muted); margin:8px 0 26px; }
-.pricing-list{ list-style:none; margin:0 0 28px; padding:0; text-align:left; display:flex; flex-direction:column; gap:12px; }
+.pricing-list{ list-style:none; margin:0 0 28px; padding:0; text-align:start; display:flex; flex-direction:column; gap:12px; }
 .pricing-list li{ display:flex; gap:10px; font:500 14.5px var(--font); color:var(--on-bg); }
 
 /* ============================================================
@@ -461,11 +465,11 @@ section{ padding:var(--space-9) 0; }
    <ol> would fall back to unstyled browser defaults, out of place next to the rest of this design. */
 .faq-steps{ list-style:none; padding:0; margin:14px 0; counter-reset:step; }
 .faq-steps li{
-  position:relative; counter-increment:step; padding:14px 16px 14px 50px; margin:8px 0;
+  position:relative; counter-increment:step; padding-block:14px; padding-inline:50px 16px; margin:8px 0;
   background:var(--surface-variant); border:1px solid var(--outline); border-radius:12px;
 }
 .faq-steps li::before{
-  content:counter(step); position:absolute; left:14px; top:14px; width:22px; height:22px;
+  content:counter(step); position:absolute; inset-inline-start:14px; top:14px; width:22px; height:22px;
   border-radius:50%; background:var(--coral); color:#fff; font:700 12px var(--font);
   display:flex; align-items:center; justify-content:center;
 }
@@ -476,7 +480,7 @@ section{ padding:var(--space-9) 0; }
 .faq-steps .step-link{ display:inline-block; margin-top:6px; font:600 13px var(--font); color:var(--coral); }
 .faq-steps .step-link::after{ content:" →"; }
 .faq-note{
-  background:var(--surface-variant); border:1px solid var(--outline); border-left:3px solid var(--coral);
+  background:var(--surface-variant); border:1px solid var(--outline); border-inline-start:3px solid var(--coral);
   border-radius:10px; padding:14px 18px; margin:16px 0 4px; font-size:13.5px; color:var(--on-bg-muted);
 }
 .faq-note b{ color:var(--on-bg); }
@@ -531,15 +535,15 @@ section{ padding:var(--space-9) 0; }
 .legal-meta{ display:flex; flex-wrap:wrap; gap:8px 18px; color:var(--on-bg-muted); font-size:13.5px; margin:10px 0 22px; }
 .legal-meta b{ color:var(--on-bg); font-weight:600; }
 .legal-summary{
-  background:var(--surface); border:1px solid var(--outline); border-left:3px solid var(--coral); border-radius:12px;
+  background:var(--surface); border:1px solid var(--outline); border-inline-start:3px solid var(--coral); border-radius:12px;
   padding:20px 22px; margin-bottom:var(--space-7);
 }
 .legal-summary h2{ font:600 12px var(--font); letter-spacing:.08em; text-transform:uppercase; color:var(--on-bg-muted); margin:0 0 10px; }
-.legal-summary ul{ margin:0; padding-left:20px; }
+.legal-summary ul{ margin:0; padding-inline-start:20px; }
 .legal-summary li{ margin:6px 0; color:var(--on-bg); font-size:14.5px; }
 .legal-toc{ background:var(--surface); border:1px solid var(--outline); border-radius:12px; padding:18px 22px; margin-bottom:var(--space-8); }
 .legal-toc h2{ font:600 12px var(--font); letter-spacing:.08em; text-transform:uppercase; color:var(--on-bg-muted); margin:0 0 10px; }
-.legal-toc ol{ margin:0; padding-left:20px; columns:2; column-gap:24px; }
+.legal-toc ol{ margin:0; padding-inline-start:20px; columns:2; column-gap:24px; }
 .legal-toc li{ break-inside:avoid; margin:5px 0; font-size:14px; }
 .legal-toc a{ color:var(--on-bg); }
 .legal-toc a:hover{ color:var(--coral); }
@@ -554,7 +558,7 @@ section{ padding:var(--space-9) 0; }
 .legal-section h2 .num{ color:var(--coral); font-variant-numeric:tabular-nums; font-size:15px; font-weight:700; }
 .legal-section h3{ font-size:15.5px; margin:22px 0 8px; }
 .legal-section p{ color:var(--on-bg); font-size:15.5px; margin:14px 0; line-height:1.65; }
-.legal-section ul{ padding-left:20px; margin:14px 0; }
+.legal-section ul{ padding-inline-start:20px; margin:14px 0; }
 .legal-section li{ color:var(--on-bg); font-size:15.5px; margin:6px 0; line-height:1.6; }
 .legal-section a{ color:var(--coral); font-weight:600; }
 .legal-field-list{ list-style:none; padding:0; margin:16px 0; }
@@ -638,7 +642,7 @@ section{ padding:var(--space-9) 0; }
 .guide-section h2{ font-size:23px; margin-bottom:8px; }
 .guide-section > p{ font-size:15px; line-height:1.65; max-width:68ch; margin-bottom:12px; }
 .guide-section .faq-steps p, .guide-section .faq-note{ line-height:1.6; }
-.guide-list{ margin:10px 0 0; padding-left:20px; }
+.guide-list{ margin:10px 0 0; padding-inline-start:20px; }
 .guide-list li{ color:var(--on-bg-muted); font-size:14.5px; margin:6px 0; line-height:1.55; }
 .guide-list b{ color:var(--on-bg); }
 .guide-shell a.inline, .faq-a a.inline{ color:var(--coral); font-weight:700; }
@@ -674,3 +678,42 @@ section{ padding:var(--space-9) 0; }
 .video-facade iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
 .video-caption{ margin-top:10px; font-size:13px; line-height:1.55; }
 .video-caption a{ color:var(--coral); font-weight:600; }
+
+/* ============================================================
+   Languages: picker, right-to-left (Arabic), translated legal pages
+   ============================================================ */
+:lang(ar){ --font:"Sora","IBM Plex Sans Arabic",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+/* Arabic has no letter-spacing and needs a little more line height than Sora's Latin. */
+:lang(ar) h1, :lang(ar) h2, :lang(ar) h3, :lang(ar) .eyebrow, :lang(ar) .homelab-title{ letter-spacing:0; }
+:lang(ar) body{ line-height:1.65; }
+/* Arrows that point "onward" follow the reading direction; media controls and the play icon don't. */
+[dir="rtl"] .faq-steps .step-link::after, [dir="rtl"] .homelab-link::after{ content:" ←"; }
+
+.lang-picker{ position:relative; }
+.lang-picker summary{
+  list-style:none; cursor:pointer; display:flex; align-items:center; gap:6px; height:36px; padding:0 10px;
+  border-radius:999px; border:1px solid var(--outline-strong); color:var(--on-bg); font:600 12.5px var(--font);
+}
+.lang-picker summary::-webkit-details-marker{ display:none; }
+.lang-picker summary:hover, .lang-picker[open] summary{ border-color:var(--coral); color:var(--coral); }
+.lang-picker summary:focus-visible{ outline:2px solid var(--coral); outline-offset:2px; }
+.lang-picker summary svg{ width:16px; height:16px; }
+.lang-picker .lang-list{
+  position:absolute; inset-inline-end:0; top:calc(100% + 8px); z-index:60; min-width:190px; margin:0; padding:6px; list-style:none;
+  background:var(--surface); border:1px solid var(--outline-strong); border-radius:14px; box-shadow:var(--shadow-card);
+}
+.lang-list a{ display:block; padding:9px 12px; border-radius:9px; font:600 14px var(--font); color:var(--on-bg); }
+.lang-list a:hover{ background:var(--surface-variant); }
+.lang-list a[aria-current="true"]{ color:var(--coral); }
+.lang-list a[aria-current="true"]::after{ content:" ✓"; }
+.lang-list a[lang="ar"]{ font-family:"IBM Plex Sans Arabic","Segoe UI",sans-serif; }
+@media (max-width:920px){ .header-cta .lang-picker{ display:none; } }
+.mobile-langs{ list-style:none; margin:12px 0 0; padding:12px 0 0; border-top:1px solid var(--outline); display:flex; flex-wrap:wrap; gap:6px; }
+.mobile-langs a{ padding:8px 12px; border:1px solid var(--outline); border-radius:999px; font-size:14px; }
+
+.legal-translation-note{
+  margin:0 0 var(--space-6); padding:12px 16px; font-size:13.5px; line-height:1.55;
+  background:var(--surface); border:1px solid var(--outline); border-radius:10px;
+}
+.legal-translation-note a{ color:var(--coral); font-weight:600; }
+html[lang="en"] .legal-translation-note{ display:none; }
