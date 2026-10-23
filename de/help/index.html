@@ -132,7 +132,7 @@
 </details>
 <details class="faq-item">
 <summary>Funktionieren auch Filme und Serien oder nur Musik?<span class="plus"></span></summary>
-<div class="faq-a">Bei Jellyfin, Emby, Plex und Kodi kann Audex Videos genauso durchstöbern und abspielen wie Audio. Server der Subsonic-Familie und Audiobookshelf sind reine Audio-Server, so wie diese Plattformen selbst.</div>
+<div class="faq-a">Bei Jellyfin, Emby, Plex und Kodi kann Audex Videos genauso durchstöbern und abspielen wie Audioinhalte. Server der Subsonic-Familie und Audiobookshelf sind reine Audio-Server, entsprechend den Möglichkeiten dieser Plattformen.</div>
 </details>
 <details class="faq-item">
 <summary>Muss ich mein Passwort jedes Mal eingeben?<span class="plus"></span></summary>
@@ -218,7 +218,7 @@
 </details>
 <details class="faq-item">
 <summary>In welchen Sprachen können Bücher vorgelesen werden?<span class="plus"></span></summary>
-<div class="faq-a">Audex erkennt die Sprache jedes Kapitels und liest es mit einer Stimme dieser Sprache, also bekommt ein arabisches Buch eine arabische Stimme, auch wenn die App auf Deutsch ist. Offline-Stimmen gibt es für Englisch, Arabisch, Deutsch, Spanisch und Portugiesisch (lade sie unter Einstellungen → Bücher &amp; Stimmen herunter); andere Sprachen nutzen die eingebauten Stimmen deines Handys. Wird ein Buch falsch erkannt, wähle seine Sprache im Menü „Stimme“ des Buch-Players.</div>
+<div class="faq-a">Audex erkennt die Sprache jedes Kapitels und liest es mit einer Stimme in dieser Sprache vor, sodass ein arabisches Buch eine arabische Stimme bekommt, auch wenn die App auf Deutsch eingestellt ist. Offline-Stimmen gibt es für Englisch, Arabisch, Deutsch, Spanisch und Portugiesisch (lade sie unter Einstellungen → Bücher &amp; Stimmen herunter); andere Sprachen nutzen die eingebauten Stimmen deines Handys. Wird die Sprache eines Buchs falsch erkannt, wähle sie im Menü „Stimme“ des Buch-Players aus.</div>
 </details>
 <details class="faq-item">
 <summary>Warum sollte ich meinen eigenen Google-Cloud-Schlüssel statt der eingebauten Stimme nutzen?<span class="plus"></span></summary>
@@ -241,17 +241,17 @@
 </li>
 <li>
 <b>Die Text-to-Speech-API aktivieren</b>
-<p>Aktiviere mit ausgewähltem Projekt die Cloud Text-to-Speech API – derselbe Link, den auch die Schaltfläche „API-Schlüssel holen“ in Audex öffnet.</p>
+<p>Aktiviere bei ausgewähltem Projekt die Cloud Text-to-Speech API – über denselben Link, den auch die Schaltfläche „API-Schlüssel holen“ in Audex öffnet.</p>
 <a class="step-link" href="https://console.cloud.google.com/apis/library/texttospeech.googleapis.com" rel="noopener" target="_blank">Die Text-to-Speech-API aktivieren</a>
 </li>
 <li>
 <b>Einen API-Schlüssel erstellen</b>
-<p>Gehe zu <b>APIs &amp; Services → Credentials</b>, klicke auf <b>Create Credentials</b> und wähle <b>API key</b>. Google Cloud erzeugt den Schlüssel sofort – kopiere ihn an einen sicheren Ort.</p>
+<p>Gehe zu <b>APIs &amp; Dienste → Anmeldedaten</b>, klicke auf <b>Anmeldedaten erstellen</b> und wähle <b>API-Schlüssel</b>. Google Cloud erzeugt den Schlüssel sofort – kopiere ihn an einen sicheren Ort.</p>
 <a class="step-link" href="https://console.cloud.google.com/apis/credentials" rel="noopener" target="_blank">Anmeldedaten öffnen</a>
 </li>
 <li>
 <b>Empfohlen: den Schlüssel nur für Text-to-Speech freigeben</b>
-<p>Klicke auf derselben Seite auf den eben erstellten Schlüssel, wähle unter <b>API restrictions</b> die Option <b>Restrict key</b> und markiere nur <b>Cloud Text-to-Speech API</b> – so kann der Schlüssel für nichts anderes verwendet werden, falls er je durchsickert.</p>
+<p>Klicke auf derselben Seite auf den eben erstellten Schlüssel, wähle unter <b>API-Einschränkungen</b> die Option <b>Schlüssel einschränken</b> und markiere nur <b>Cloud Text-to-Speech API</b> – so kann der Schlüssel für nichts anderes verwendet werden, falls er je durchsickert.</p>
 </li>
 <li>
 <b>In Audex einfügen</b>
