@@ -236,7 +236,7 @@ section{ padding:var(--space-9) 0; }
 .hero-ctas .btn-row{ display:flex; flex-wrap:wrap; gap:12px; }
 
 .stat-strip{ display:flex; flex-wrap:wrap; gap:12px; margin-top:var(--space-8); }
-.stat-strip .pill-stat{ flex:1 1 200px; }
+.stat-strip .pill-stat{ flex:1 1 140px; }
 
 /* ============================================================
    Phone-frame mockups (recreations of real app screens)
@@ -439,6 +439,7 @@ section{ padding:var(--space-9) 0; }
 .pricing-trial-pill{ display:inline-flex; align-items:center; gap:6px; background:var(--coral); color:var(--on-accent); font:700 11px var(--font); letter-spacing:.06em; text-transform:uppercase; padding:5px 14px; border-radius:999px; margin-bottom:20px; }
 .price-figure{ font:800 64px var(--font); letter-spacing:-0.03em; color:var(--on-bg); line-height:1; }
 .price-figure sup{ font-size:26px; top:-24px; }
+.price-figure sup.after{ margin-inline-start:4px; }
 .price-note{ font:600 14px var(--font); color:var(--on-bg-muted); margin:8px 0 26px; }
 .pricing-list{ list-style:none; margin:0 0 28px; padding:0; text-align:start; display:flex; flex-direction:column; gap:12px; }
 .pricing-list li{ display:flex; gap:10px; font:500 14.5px var(--font); color:var(--on-bg); }
@@ -510,7 +511,7 @@ section{ padding:var(--space-9) 0; }
 /* ============================================================
    Help center layout
    ============================================================ */
-.help-shell{ display:grid; grid-template-columns:240px 1fr; gap:var(--space-8); padding:var(--space-8) 0 var(--space-9); align-items:start; }
+.help-shell{ display:grid; grid-template-columns:240px 1fr; gap:var(--space-8); padding-block:var(--space-8) var(--space-9); align-items:start; }
 @media (max-width:860px){ .help-shell{ grid-template-columns:1fr; } }
 .help-nav{ position:sticky; top:96px; display:flex; flex-direction:column; gap:2px; }
 @media (max-width:860px){ .help-nav{ position:static; flex-direction:row; flex-wrap:wrap; gap:8px; margin-bottom:8px; } }
@@ -528,7 +529,8 @@ section{ padding:var(--space-9) 0; }
 /* ============================================================
    Legal pages (Privacy Policy / Delete Account)
    ============================================================ */
-.legal-shell{ max-width:760px; margin:0 auto; padding:var(--space-8) 0 var(--space-9); }
+.legal-shell{ max-width:760px; margin:0 auto; padding:var(--space-8) 24px var(--space-9); }
+@media (max-width:640px){ .legal-shell{ padding-inline:20px; } }
 .legal-crumb{ display:flex; align-items:center; gap:8px; font:500 13.5px var(--font); color:var(--on-bg-muted); margin-bottom:var(--space-6); }
 .legal-crumb a{ display:flex; align-items:center; gap:7px; font-weight:700; color:var(--on-bg); }
 .legal-crumb .mark{ width:20px; height:20px; border-radius:6px; }
@@ -598,9 +600,10 @@ section{ padding:var(--space-9) 0; }
 .del-back-link:hover{ color:var(--coral); }
 
 /* Official Google Play badge (includes its own required clear space) */
-.play-badge{display:inline-block;line-height:0;margin:-9px -12px;transition:transform .15s}
+.play-badge{display:inline-block;line-height:0;border-radius:8px;transition:transform .15s}
 .play-badge:hover{transform:translateY(-1px)}
-.play-badge img{height:76px;width:auto;display:block}
+/* Badges are cropped to their visible edge, so they line up with the 48px buttons beside them. */
+.play-badge img{height:48px;width:auto;display:block}
 .btn-row .play-badge{align-self:center}
 
 .phone-screen.shot{ padding:0; aspect-ratio:1/2; }
@@ -634,7 +637,7 @@ section{ padding:var(--space-9) 0; }
 /* ============================================================
    Guide pages (Help Center articles, e.g. the Raspberry Pi guide)
    ============================================================ */
-.guide-shell{ max-width:820px; margin:0 auto; padding:var(--space-8) 0 var(--space-9); }
+.guide-shell{ max-width:820px; margin:0 auto; padding-block:var(--space-8) var(--space-9); }
 .guide-shell h1{ font-size:clamp(28px,4vw,42px); text-wrap:balance; }
 .guide-shell .lede{ margin-top:12px; }
 .guide-meta{ display:flex; flex-wrap:wrap; gap:8px; margin-top:var(--space-5); }
