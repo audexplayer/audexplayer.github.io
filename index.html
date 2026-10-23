@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Audex - the audio player for what you already run</title>
-<meta name="description" content="Audex connects straight to Jellyfin, Plex, Emby, Subsonic, Audiobookshelf, or Kodi — or just the files already on your phone — and reads your PDFs and EPUBs aloud. $5 once, after a free 30-day trial. No subscription.">
+<meta name="description" content="Audex connects straight to Jellyfin, Plex, Emby, Navidrome, Audiobookshelf, or Kodi — on a NAS or a Raspberry Pi — or just the files already on your phone, and reads your PDFs and EPUBs aloud. In English, Arabic, German, Spanish and Portuguese. $5 once, after a free 30-day trial.">
 <link rel="icon" type="image/svg+xml" href="/icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=19">
+<link rel="stylesheet" href="/styles.css?v=20">
 </head>
 <body>
 
@@ -56,7 +56,7 @@
       <div>
         <p class="eyebrow">Audio player for Android</p>
         <h1>Point it at your library.<br>It just plays.</h1>
-        <p class="lede">Audex connects straight to Jellyfin, Plex, Emby, Subsonic, Audiobookshelf, or Kodi — or just the files already on your phone. Browse your real library, the way your server already organizes it. No re-uploading, no ads, no account required to start.</p>
+        <p class="lede">Audex connects straight to the server you already run — Jellyfin, Plex, Emby, Navidrome, Audiobookshelf, or Kodi, on anything from a NAS to a Raspberry Pi — or just the files already on your phone. Browse your real library, the way your server already organizes it. No re-uploading, no ads, no account required to start.</p>
         <div class="hero-ctas" style="margin-top:28px">
           <div class="btn-row">
             <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.audex" aria-label="Get Audex on Google Play"><img src="/badges/google-play-badge.png" alt="Get it on Google Play" width="646" height="250"></a>
@@ -79,7 +79,7 @@
     <div class="wrap stat-strip" data-reveal>
       <div class="pill-stat"><b>6</b><span>server platforms</span></div>
       <div class="pill-stat"><b>113</b><span>headphone EQ profiles</span></div>
-      <div class="pill-stat"><b>5</b><span>places it runs</span></div>
+      <div class="pill-stat"><b>5</b><span>languages, Arabic included</span></div>
       <div class="pill-stat"><b>$5</b><span>once, ever</span></div>
     </div>
   </section>
@@ -90,7 +90,7 @@
       <div data-reveal>
         <p class="eyebrow">Media servers</p>
         <h2>Whatever you're already self-hosting</h2>
-        <p class="lede" style="margin-top:14px">Audex connects directly to the server you already run. Browse Albums, Artists, Genres, and Playlists exactly the way your server organizes them — because it's your real library, not a copy synced into ours.</p>
+        <p class="lede" style="margin-top:14px">Audex connects directly to the server you already run, whether that's a NAS, a Raspberry Pi, or a box in the closet. Browse Albums, Artists, Genres, and Playlists exactly the way your server organizes them — because it's your real library, not a copy synced into ours.</p>
         <ul class="feature-list">
           <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></span>Live connection status per server, right on the row — reconnect with one tap</li>
           <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></span>Download anything for offline listening before a commute drops your signal</li>
@@ -104,6 +104,16 @@
           <div class="backend-item"><span class="logo-chip"><img src="/logos/audiobookshelf.png" alt="Audiobookshelf logo"></span><span class="label">Audiobookshelf</span></div>
           <div class="backend-item"><span class="logo-chip"><img src="/logos/plex.png" alt="Plex logo"></span><span class="label">Plex</span></div>
           <div class="backend-item"><span class="logo-chip"><img src="/logos/kodi.svg" alt="Kodi logo"></span><span class="label">Kodi</span></div>
+        </div>
+        <div class="homelab-card">
+          <p class="homelab-title">Built for home servers</p>
+          <ul class="homelab-list">
+            <li><b>Finds them for you.</b> Jellyfin, Emby and Kodi servers on your Wi-Fi show up on their own — no typing IP addresses.</li>
+            <li><b>Home and away.</b> Give a server a second address, like a VPN or a public URL, and Audex switches to it by itself when you leave the house.</li>
+            <li><b>Self-signed HTTPS, done safely.</b> Check the certificate's fingerprint once; if it ever changes, Audex stops and asks.</li>
+            <li><b>Easy on a Raspberry Pi.</b> Stream original quality so a small server never has to convert files, and libraries of any size load in full.</li>
+          </ul>
+          <a class="homelab-link" href="/help/raspberry-pi/">Set up a Raspberry Pi music server</a>
         </div>
       </div>
       <div class="col-visual" data-reveal>
@@ -121,10 +131,11 @@
       <div data-reveal>
         <p class="eyebrow">Local files &amp; cloud folders</p>
         <h2>No server? Your files work just as well</h2>
-        <p class="lede" style="margin-top:14px">Point Audex at any folder on your device, or connect Google Drive, Dropbox, OneDrive, a WebDAV address, or an SMB network share. Everything groups itself into Albums, Artists, and Folders automatically — no manual tagging.</p>
+        <p class="lede" style="margin-top:14px">Point Audex at any folder on your device, connect Google Drive, Dropbox, or OneDrive, or stream straight from a WebDAV address or an SMB share on your network. Everything groups itself into Albums, Artists, and Folders automatically — no manual tagging.</p>
         <ul class="feature-list">
           <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></span>One-tap shortcuts for the folders WhatsApp voice notes and your phone's own recorder already use</li>
-          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></span>A connected cloud folder downloads once, then plays like any local file — no live connection needed after</li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></span>Browse a WebDAV or SMB share folder by folder and play right away — or keep any folder offline with one tap</li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></span>A Google Drive, Dropbox, or OneDrive folder downloads once, then plays like any local file — no live connection needed after</li>
           <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></span>Search scoped to whichever source you're browsing — local files, a server, or your books</li>
         </ul>
         <div class="chip-row" style="margin-top:var(--space-6)">
@@ -146,6 +157,7 @@
         <h2>Turn any book into an audiobook</h2>
         <p class="lede" style="margin-top:14px">Import a PDF or EPUB and Audex reads it back to you, chapter by chapter — using the book's own table of contents, not a blind page-count guess. As it reads, the line being spoken highlights on screen so you can follow along.</p>
         <ul class="feature-list">
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></span>Read in the book's own language — each chapter's language is detected, so an Arabic book gets an Arabic voice and a German one a German voice</li>
           <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></span>A fully offline neural voice, once downloaded — no internet needed to keep reading</li>
           <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></span>Or your phone's built-in text-to-speech, zero setup required</li>
           <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></span>Or bring your own Google Cloud key for studio-grade voices — billed to your own account, never shared with anyone else's usage</li>
@@ -193,7 +205,7 @@
       <div class="section-head center" data-reveal>
         <p class="eyebrow" style="justify-content:center">One app, every screen</p>
         <h2>It's not just a phone app</h2>
-        <p class="lede" style="margin:14px auto 0">One purchase, tied to your Google account, covers every device you sign into.</p>
+        <p class="lede" style="margin:14px auto 0">One purchase, tied to your Google account, covers every device you sign into — in whichever of five languages you speak.</p>
       </div>
       <div class="device-grid" data-reveal>
         <div class="device-card">
@@ -214,12 +226,25 @@
         <div class="device-card">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
           <h3>Android TV</h3>
-          <p>A D-pad-built app for the living room, with the same servers and radio — plus phone-to-TV file sync.</p>
+          <p>A D-pad-built app for the living room, with the same servers and radio — send your servers and files over from the phone in one step.</p>
         </div>
         <div class="device-card">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-7"/><path d="M3 12a6 6 0 0 1 6 6"/><path d="M3 16a2 2 0 0 1 2 2"/><circle cx="3.5" cy="18.5" r="1" fill="currentColor" stroke="none"/></svg></span>
           <h3>Chromecast</h3>
           <p>Cast straight to any TV or speaker in the room, from whatever's currently playing.</p>
+        </div>
+      </div>
+      <div class="lang-card" data-reveal>
+        <div>
+          <h3>In your language</h3>
+          <p>The whole app — phone, car, TV and watch — speaks English, Arabic, German, Spanish and Portuguese. Arabic gets a true right-to-left layout, not a mirrored afterthought, and titles in any script read the right way round.</p>
+        </div>
+        <div class="chip-row lang-chips">
+          <span class="chip" lang="en">English</span>
+          <span class="chip" lang="ar" dir="rtl">العربية</span>
+          <span class="chip" lang="de">Deutsch</span>
+          <span class="chip" lang="es">Español</span>
+          <span class="chip" lang="pt-BR">Português (Brasil)</span>
         </div>
       </div>
     </div>
@@ -285,7 +310,15 @@
         </details>
         <details class="faq-item">
           <summary>Which media servers does it support?<span class="plus"></span></summary>
-          <div class="faq-a">Jellyfin, Emby, Plex, Subsonic and its compatible siblings (Navidrome, OpenSubsonic), Audiobookshelf, and Kodi.</div>
+          <div class="faq-a">Jellyfin, Emby, Plex, Subsonic and its compatible siblings (Navidrome, OpenSubsonic), Audiobookshelf, and Kodi — plus WebDAV and SMB shares.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Will it work with a server on a Raspberry Pi?<span class="plus"></span></summary>
+          <div class="faq-a">Yes — it's one of the best fits. Audex can stream original quality so the Pi never has to convert files, finds servers on your Wi-Fi on its own, and handles self-signed certificates safely. <a href="/help/raspberry-pi/" style="color:var(--coral);font-weight:700">Follow the step-by-step Raspberry Pi guide</a>.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Which languages does Audex speak?<span class="plus"></span></summary>
+          <div class="faq-a">English, Arabic, German, Spanish, and Portuguese (Brazil) — on the phone, in the car, on the TV and on the watch. It follows your phone's language, or you can pick one in Settings. Books are read aloud in their own language.</div>
         </details>
       </div>
       <p style="text-align:center;margin-top:28px" data-reveal><a href="/help/" style="color:var(--coral);font-weight:700">Browse the full Help Center →</a></p>
@@ -327,6 +360,7 @@
         <h4>Resources</h4>
         <ul>
           <li><a href="/help/">Help Center</a></li>
+          <li><a href="/help/raspberry-pi/">Raspberry Pi guide</a></li>
           <li><a href="/privacy-policy/">Privacy Policy</a></li>
           <li><a href="/delete-account/">Delete account &amp; data</a></li>
         </ul>
@@ -341,11 +375,11 @@
     </div>
     <div class="footer-bottom">
       <span>© 2026 Shafra Labs</span>
-      <span>Audex is not affiliated with Jellyfin, Plex, Emby, Subsonic, Audiobookshelf, or Kodi.</span>
+      <span>Audex is not affiliated with Jellyfin, Plex, Emby, Subsonic, Navidrome, Audiobookshelf, Kodi, or Raspberry Pi Ltd. Raspberry Pi is a trademark of Raspberry Pi Ltd.</span>
     </div>
   </div>
 </footer>
 
-<script src="/site.js?v=19"></script>
+<script src="/site.js?v=20"></script>
 </body>
 </html>

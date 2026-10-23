@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Help Center — Audex</title>
-<meta name="description" content="How Audex's media servers, local files, books, radio, sound, and multi-device features actually work — setup help and answers, not just marketing copy.">
+<meta name="description" content="How Audex's media servers, home and Raspberry Pi servers, local files, books, languages, radio, sound, and multi-device features actually work — setup help and answers, not just marketing copy.">
 <link rel="icon" type="image/svg+xml" href="/icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=19">
+<link rel="stylesheet" href="/styles.css?v=20">
 </head>
 <body>
 
@@ -56,6 +56,7 @@
     <nav class="help-nav" aria-label="Help categories">
       <a href="#getting-started">Getting Started</a>
       <a href="#media-servers">Media Servers</a>
+      <a href="#home-servers">Home Servers &amp; Raspberry Pi</a>
       <a href="#files-cloud">Files &amp; Cloud Storage</a>
       <a href="#books-tts">Books &amp; Text-to-Speech</a>
       <a href="#radio">Internet Radio</a>
@@ -84,11 +85,15 @@
           </details>
           <details class="faq-item">
             <summary>What's the free trial, exactly?<span class="plus"></span></summary>
-            <div class="faq-a">30 days with every feature unlocked, starting the first time you open the app, tied to your Google account rather than the install — reinstalling doesn't reset it. After the trial, a single $5 payment through Google Play unlocks Audex for good. There's no subscription at any point.</div>
+            <div class="faq-a">30 days with every feature unlocked, starting the first time you open the app. It's tied to your device (and to your Google account too, if you sign in) rather than the install, so reinstalling doesn't reset it. After the trial, a single $5 payment through Google Play unlocks Audex for good, on every device signed into the same Google account. There's no subscription at any point.</div>
           </details>
           <details class="faq-item">
             <summary>Where do I add my first source?<span class="plus"></span></summary>
             <div class="faq-a">From Settings: "Media servers" to connect a server, "Local files" to add a folder from your device or a cloud account, or "Books" to import a PDF or EPUB. Each source shows up as its own tab in your Library once added.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Can I use Audex in my language?<span class="plus"></span></summary>
+            <div class="faq-a">Audex speaks English, Arabic (العربية), German (Deutsch), Spanish (Español), and Portuguese (Português, Brazil) — on the phone, in the car, on the TV, and on the watch. It follows your phone's language by default; to choose a different one, go to <b>Settings → Language</b>. In Arabic the whole layout runs right to left.</div>
           </details>
         </div>
       </section>
@@ -99,11 +104,11 @@
         <div class="faq-list">
           <details class="faq-item">
             <summary>Which servers does Audex support?<span class="plus"></span></summary>
-            <div class="faq-a">Jellyfin, Emby, Plex, Subsonic and its compatible siblings (Navidrome, OpenSubsonic, Airsonic), Audiobookshelf, and Kodi.</div>
+            <div class="faq-a">Jellyfin, Emby, Plex, Subsonic and its compatible siblings (Navidrome, OpenSubsonic, Airsonic), Audiobookshelf, and Kodi. WebDAV addresses and SMB network shares can be added the same way and streamed folder by folder.</div>
           </details>
           <details class="faq-item">
             <summary>How do I connect a server?<span class="plus"></span></summary>
-            <div class="faq-a">Settings → Media servers → Add a server. Pick the type, enter its address (and username/password if it needs one), and Audex tests the connection before saving — so you know it worked before you leave the screen.</div>
+            <div class="faq-a">Settings → Media servers → Add a server. Jellyfin, Emby, and Kodi servers on your network appear under "On this network" — tap one and its address is filled in. Otherwise pick the type, enter its address (and username/password if it needs one), and Audex tests the connection before saving — so you know it worked before you leave the screen.</div>
           </details>
           <details class="faq-item">
             <summary>Can I connect more than one server?<span class="plus"></span></summary>
@@ -119,11 +124,42 @@
           </details>
           <details class="faq-item">
             <summary>My server shows "offline" — what should I check?<span class="plus"></span></summary>
-            <div class="faq-a">First, confirm the server itself is actually reachable from wherever your phone currently is — the same Wi-Fi network at home, or a VPN/reverse proxy if you're away. Then double-check that the address and port saved in Audex still match what the server is really listening on; a server restart or a router change can shift this.</div>
+            <div class="faq-a">First, confirm the server itself is actually reachable from wherever your phone currently is — the same Wi-Fi network at home, or a VPN/reverse proxy if you're away. Then double-check that the address and port saved in Audex still match what the server is really listening on; a server restart or a router change can shift this. If you use the server both at home and away, give it a second address (see Home Servers below) so Audex can switch on its own.</div>
           </details>
           <details class="faq-item">
             <summary>Can I download server content for offline listening?<span class="plus"></span></summary>
             <div class="faq-a">Yes, from any server — download a track, an album, or a whole playlist so a spotty connection doesn't interrupt a commute.</div>
+          </details>
+        </div>
+      </section>
+
+      <section class="help-category" id="home-servers">
+        <h2>Home Servers &amp; Raspberry Pi</h2>
+        <p class="cat-note">Running your own server on a Raspberry Pi, a NAS, or a spare computer.</p>
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>How do I set up a music server on a Raspberry Pi?<span class="plus"></span></summary>
+            <div class="faq-a">Follow the <a class="inline" href="/help/raspberry-pi/">step-by-step Raspberry Pi guide</a>: it installs Navidrome, a free music server that runs comfortably on a Pi, copies your music across, and connects Audex to it — with a video walkthrough if you'd rather watch first.</div>
+          </details>
+          <details class="faq-item">
+            <summary>What does "Stream original quality" do?<span class="plus"></span></summary>
+            <div class="faq-a">For Subsonic and Navidrome servers, it tells the server to send your files exactly as they are instead of converting them on the fly. That's much less work for a small server like a Raspberry Pi, at the cost of more mobile data away from home. Turn it on when you add the server, or later from its page in Settings → Media servers.</div>
+          </details>
+          <details class="faq-item">
+            <summary>How do I use my server at home and away?<span class="plus"></span></summary>
+            <div class="faq-a">Edit the server and add a <b>Second address</b> — for example its VPN address (such as Tailscale) or a public URL. Audex uses your home address when it can, and switches to the second one by itself when the first can't be reached. You can see which one is in use on the server's page.</div>
+          </details>
+          <details class="faq-item">
+            <summary>My server uses a self-signed certificate. Is that OK?<span class="plus"></span></summary>
+            <div class="faq-a">Yes. The first time, Audex shows the certificate's details and SHA-256 fingerprint so you can compare them with your server and trust exactly that certificate (or the private authority that issued it). If the certificate ever changes unexpectedly, Audex stops and asks before connecting again.</div>
+          </details>
+          <details class="faq-item">
+            <summary>My library has thousands of albums. Will it all show up?<span class="plus"></span></summary>
+            <div class="faq-a">Yes — Audex loads large libraries in pages, so every album, artist, and audiobook appears, however big the collection is.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Can I add my servers to the TV without typing them again?<span class="plus"></span></summary>
+            <div class="faq-a">Yes. On the TV, open <b>Import from phone</b>, then send your servers from the phone app. They arrive with their addresses, logins, and any trusted certificates.</div>
           </details>
         </div>
       </section>
@@ -138,7 +174,7 @@
           </details>
           <details class="faq-item">
             <summary>Which cloud services can I connect for files?<span class="plus"></span></summary>
-            <div class="faq-a">Google Drive, Dropbox, OneDrive, a WebDAV address, or an SMB network share.</div>
+            <div class="faq-a">Google Drive, Dropbox, and OneDrive folders, from Settings → Local files. WebDAV addresses and SMB network shares are added under Settings → Media servers, where they stream folder by folder.</div>
           </details>
           <details class="faq-item">
             <summary>How does Audex organize local files?<span class="plus"></span></summary>
@@ -146,7 +182,7 @@
           </details>
           <details class="faq-item">
             <summary>Can I download a cloud folder so it works offline?<span class="plus"></span></summary>
-            <div class="faq-a">Yes — a connected cloud folder downloads once to your device, then plays exactly like a local file with no live connection needed afterward.</div>
+            <div class="faq-a">Yes — a Google Drive, Dropbox, or OneDrive folder downloads once to your device, then plays exactly like a local file with no live connection needed afterward. For a WebDAV or SMB folder, choose <b>Keep offline</b> on it, and Audex downloads it and keeps it in sync.</div>
           </details>
         </div>
       </section>
@@ -166,6 +202,10 @@
           <details class="faq-item">
             <summary>What voices can read my books?<span class="plus"></span></summary>
             <div class="faq-a">A fully offline neural voice (nothing sent anywhere once it's downloaded), your phone's own built-in text-to-speech as a no-setup fallback, or a Google Cloud Text-to-Speech voice using an API key you supply yourself.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Which languages can books be read in?<span class="plus"></span></summary>
+            <div class="faq-a">Audex detects each chapter's language and reads it with a voice for that language, so an Arabic book gets an Arabic voice even if the app is in English. Offline voices are available for English, Arabic, German, Spanish, and Portuguese (download them in Settings → Books &amp; voices); other languages use your phone's built-in voices. If a book is detected wrongly, pick its language in the book player's Voice menu.</div>
           </details>
           <details class="faq-item">
             <summary>Why would I use my own Google Cloud key instead of the built-in voice?<span class="plus"></span></summary>
@@ -275,7 +315,7 @@
           </details>
           <details class="faq-item">
             <summary>Do I need to buy Audex again for my watch or TV?<span class="plus"></span></summary>
-            <div class="faq-a">No — one purchase, tied to your Google account, covers every device you sign into.</div>
+            <div class="faq-a">No — one purchase, tied to your Google account, covers every device you sign into. The TV app has the same 30-day free trial; to unlock it, buy Audex in the phone app with the same Google account, then press Refresh on the TV.</div>
           </details>
         </div>
       </section>
@@ -290,7 +330,7 @@
           </details>
           <details class="faq-item">
             <summary>I reinstalled Audex — do I lose my trial or purchase?<span class="plus"></span></summary>
-            <div class="faq-a">No, both are tied to your Google account rather than the install, so they carry over automatically.</div>
+            <div class="faq-a">No. Your purchase is tied to your Google account, and the trial to your device (and your Google account, if you sign in), rather than the install — so both carry over automatically.</div>
           </details>
           <details class="faq-item">
             <summary>How do I delete my account data?<span class="plus"></span></summary>
@@ -341,6 +381,7 @@
         <h4>Resources</h4>
         <ul>
           <li><a href="/help/">Help Center</a></li>
+          <li><a href="/help/raspberry-pi/">Raspberry Pi guide</a></li>
           <li><a href="/privacy-policy/">Privacy Policy</a></li>
           <li><a href="/delete-account/">Delete account &amp; data</a></li>
         </ul>
@@ -355,11 +396,11 @@
     </div>
     <div class="footer-bottom">
       <span>© 2026 Shafra Labs</span>
-      <span>Audex is not affiliated with Jellyfin, Plex, Emby, Subsonic, Audiobookshelf, or Kodi.</span>
+      <span>Audex is not affiliated with Jellyfin, Plex, Emby, Subsonic, Navidrome, Audiobookshelf, Kodi, or Raspberry Pi Ltd. Raspberry Pi is a trademark of Raspberry Pi Ltd.</span>
     </div>
   </div>
 </footer>
 
-<script src="/site.js?v=19"></script>
+<script src="/site.js?v=20"></script>
 </body>
 </html>

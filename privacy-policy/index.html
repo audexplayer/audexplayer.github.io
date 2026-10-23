@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=19">
+<link rel="stylesheet" href="/styles.css?v=20">
 </head>
 <body>
 
@@ -55,7 +55,7 @@
 
     <h1 style="font-size:30px">Privacy Policy</h1>
     <div class="legal-meta">
-      <span>Effective: <b>September 1, 2026</b></span>
+      <span>Effective: <b>October 23, 2026</b></span>
       <span>Applies to: <b>Audex for Android</b></span>
     </div>
 
@@ -107,8 +107,9 @@
       <p>Purchases are handled entirely by Google Play and confirmed directly on your device through Google's own Play Billing system. We never receive your payment card, billing address, or any other financial or purchase detail on any server we operate.</p>
 
       <h3>1.5 Trial status</h3>
-      <p>To recognize your free trial consistently across reinstalls and devices signed into the same Google account, our servers store a minimal record tied to that account: an account identifier and the date your trial first began. This record does not include whether or when you've purchased Audex — that's determined entirely on your own device, directly from Google Play, each time the app checks.</p>
-      <p>We also retain a second, separate value: a one-way cryptographic hash of your account identifier, which cannot be reversed to reveal who it belongs to. Its only purpose is recognizing that a given account has already used a trial, even after the record above has been deleted — without it, deleting and recreating that record would let a trial be reset indefinitely. This hash carries no information about you or your activity beyond that one yes/no fact, and nothing else about you or your activity is stored on our servers.</p>
+      <p>If you sign in with Google, then to recognize your free trial consistently across reinstalls and devices signed into the same Google account, our servers store a minimal record tied to that account: an account identifier and the date your trial first began. This record does not include whether or when you've purchased Audex — that's determined entirely on your own device, directly from Google Play, each time the app checks.</p>
+      <p>We also retain a second, separate value: a one-way cryptographic hash of your account identifier, which cannot be reversed to reveal who it belongs to. Its only purpose is recognizing that a given account has already used a trial, even after the record above has been deleted — without it, deleting and recreating that record would let a trial be reset indefinitely. This hash carries no information about you or your activity beyond that one yes/no fact.</p>
+      <p>Signing in is optional, so the trial is also recognized per device, on your phone and on Android TV alike. For this, our servers store a one-way cryptographic hash of the device's Android ID (an identifier Android gives each app on each device; the hash cannot be reversed to reveal it) together with the date the trial began on that device. If you're also signed in, the earlier of the two dates applies to both. Like the hash above, this record is kept only so a trial can't be restarted by reinstalling the app or clearing its data, and nothing else about you or your activity is stored on our servers.</p>
 
       <h3>1.6 Feedback you choose to send</h3>
       <p>If you submit a bug report or feature request, we receive the message you write along with basic app and device information (app version, device model, Android version) to help us respond. You may optionally choose to include a screenshot and a short excerpt of on-device diagnostic logs — these are only ever sent if you actively opt in for that specific report, and you can review exactly what will be sent before it's submitted.</p>
@@ -209,6 +210,6 @@
   </div>
 </footer>
 
-<script src="/site.js?v=19"></script>
+<script src="/site.js?v=20"></script>
 </body>
 </html>

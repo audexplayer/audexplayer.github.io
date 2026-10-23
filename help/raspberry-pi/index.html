@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raspberry Pi Music Server — Audex Help</title>
+<meta name="description" content="Step by step: set up a Navidrome music server on a Raspberry Pi with Docker, then stream it anywhere with Audex — including a video walkthrough.">
+<link rel="icon" type="image/svg+xml" href="/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <img class="mark" src="/icon.svg" alt="">
+      <span class="word">Aude<span class="x">x</span></span>
+    </a>
+    <nav class="main-nav">
+      <a href="/#servers">Servers</a>
+      <a href="/#files">Files &amp; Books</a>
+      <a href="/#sound">Sound</a>
+      <a href="/#everywhere">Everywhere</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/help/">Help</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn-primary btn-sm" href="https://play.google.com/store/apps/details?id=com.audex"><span class="btn-text-full">Get Audex</span><span class="btn-text-short">Get</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobileNav">
+  <a href="/#servers">Servers</a>
+  <a href="/#files">Files &amp; Books</a>
+  <a href="/#sound">Sound</a>
+  <a href="/#everywhere">Everywhere</a>
+  <a href="/#pricing">Pricing</a>
+  <a href="/help/">Help Center</a>
+  <a href="/privacy-policy/">Privacy Policy</a>
+</nav>
+
+<main>
+  <article class="wrap guide-shell">
+    <nav class="legal-crumb" aria-label="Breadcrumb">
+      <a href="/help/">Help Center</a><span aria-hidden="true">/</span><span>Raspberry Pi music server</span>
+    </nav>
+    <p class="eyebrow">Guide</p>
+    <h1>Your own music server on a Raspberry Pi</h1>
+    <p class="lede">A Raspberry Pi is a quiet, low-power way to keep your whole music collection at home and stream it anywhere. This guide sets one up with Navidrome, a free, open-source music server that runs comfortably on a Pi, and connects Audex to it. Plan on about 30 minutes, most of it waiting for downloads.</p>
+    <div class="guide-meta chip-row">
+      <span class="chip">About 30 minutes</span>
+      <span class="chip">Raspberry Pi 3, 4 or 5</span>
+      <span class="chip">Navidrome + Docker</span>
+    </div>
+
+    <section class="guide-section" id="what-you-need">
+      <h2>What you need</h2>
+      <ul class="guide-list">
+        <li><b>A Raspberry Pi 4 or 5</b> (a Pi 3 works too). Navidrome needs very little; 2 GB of memory is plenty.</li>
+        <li><b>A microSD card</b> of 16 GB or more, and the Pi's power supply. A USB SSD is better than the card for a large collection.</li>
+        <li><b>A network connection</b>. A cable to your router is the most reliable; Wi-Fi works.</li>
+        <li><b>A computer</b> to prepare the card and copy your music, on the same network as the Pi.</li>
+        <li><b>Your music files</b> (MP3, FLAC, M4A, OGG, Opus and the like) and Audex on your phone.</li>
+      </ul>
+    </section>
+
+    <section class="guide-section" id="video">
+      <h2>Prefer to watch first?</h2>
+      <p>This walkthrough shows Navidrome being set up on a Raspberry Pi 5, then fixing song tags and adding internet radio. The written steps below follow Navidrome's official Docker setup, so the commands differ a little from the video; both end with the same server.</p>
+      <div class="video-facade" data-video-id="hyhAIk-RDuA" data-title="Self-hosted music with Navidrome on a Raspberry Pi">
+        <button type="button" aria-label="Play the video: Self-hosted music with Navidrome on a Raspberry Pi (loads from YouTube)">
+          <span class="play"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+          <span class="vt">Why I Quit YT Music &amp; Spotify — Self-Hosted Music, Fixed Metadata &amp; Internet Radio on a Pi</span>
+          <span class="vs">Jeffs Pi in the Sky · 17 min · plays from YouTube</span>
+        </button>
+      </div>
+      <p class="video-caption">Navidrome is installed from 4:29. Video by <a href="https://www.youtube.com/@jeffs_piinthesky" target="_blank" rel="noopener">Jeffs Pi in the Sky</a>, not affiliated with Audex. Nothing loads from YouTube until you press play. <a href="https://www.youtube.com/watch?v=hyhAIk-RDuA" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </section>
+
+    <section class="guide-section" id="set-up-the-pi">
+      <h2>1. Set up the Raspberry Pi</h2>
+      <ol class="faq-steps">
+        <li>
+          <b>Put Raspberry Pi OS on the card</b>
+          <p>Install <b>Raspberry Pi Imager</b> on your computer and choose your Pi model, then <b>Raspberry Pi OS Lite (64-bit)</b> under "Raspberry Pi OS (other)". You won't need a desktop on a server.</p>
+          <a class="step-link" href="https://www.raspberrypi.com/software/" target="_blank" rel="noopener">Download Raspberry Pi Imager</a>
+        </li>
+        <li>
+          <b>Fill in the settings before writing</b>
+          <p>When Imager offers to customise the system, set a hostname such as <code>audex-pi</code>, a username and password, your Wi-Fi if you're not using a cable, and <b>turn on SSH</b> with password login. Then write the card, put it in the Pi and power it on. The first start takes a few minutes.</p>
+        </li>
+        <li>
+          <b>Connect to the Pi from your computer</b>
+          <p>Open a terminal (PowerShell on Windows, Terminal on macOS or Linux) and log in with the username you chose:</p>
+          <pre class="code-block"><code>ssh yourname@audex-pi.local</code></pre>
+          <p>If <code>audex-pi.local</code> isn't found, use the Pi's IP address from your router's list of devices instead.</p>
+        </li>
+        <li>
+          <b>Bring it up to date</b>
+          <pre class="code-block"><code>sudo apt update &amp;&amp; sudo apt full-upgrade -y</code></pre>
+        </li>
+      </ol>
+    </section>
+
+    <section class="guide-section" id="install-navidrome">
+      <h2>2. Install Navidrome</h2>
+      <ol class="faq-steps">
+        <li>
+          <b>Install Docker</b>
+          <p>Docker runs Navidrome in a container that's easy to update. This uses Docker's official install script, then lets your user run it without <code>sudo</code>:</p>
+          <pre class="code-block"><code>curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker $USER</code></pre>
+          <p>Type <code>exit</code> and log in again with <code>ssh</code> so the change takes effect.</p>
+        </li>
+        <li>
+          <b>Make folders for Navidrome and your music</b>
+          <pre class="code-block"><code>mkdir -p ~/navidrome/data ~/music</code></pre>
+        </li>
+        <li>
+          <b>Copy your music to the Pi</b>
+          <p>From a terminal on your computer (not the Pi), copy a folder of music across. Repeat for each folder, or copy your whole library at once:</p>
+          <pre class="code-block"><code>scp -r "Path/To/Your Music Folder" yourname@audex-pi.local:music/</code></pre>
+          <p>A large library is quicker to copy from a USB drive plugged into the Pi. Keep one folder per artist or album; Navidrome reads the tags inside the files either way.</p>
+        </li>
+        <li>
+          <b>Describe the server in a Compose file</b>
+          <p>Back on the Pi, open a new file:</p>
+          <pre class="code-block"><code>nano ~/navidrome/compose.yaml</code></pre>
+          <p>Paste this in, then save with <b>Ctrl+O</b>, <b>Enter</b>, and close with <b>Ctrl+X</b>:</p>
+          <pre class="code-block"><code>services:
+  navidrome:
+    image: navidrome/navidrome:latest
+    user: 1000:1000
+    ports:
+      - "4533:4533"
+    restart: unless-stopped
+    volumes:
+      - ./data:/data
+      - ../music:/music:ro</code></pre>
+          <p><code>1000:1000</code> is the first user on Raspberry Pi OS, the one you created. The music folder is mounted read-only, so Navidrome can never change your files.</p>
+        </li>
+        <li>
+          <b>Start it</b>
+          <pre class="code-block"><code>cd ~/navidrome
+docker compose up -d</code></pre>
+          <p>The first start downloads Navidrome. <code>restart: unless-stopped</code> brings it back by itself whenever the Pi restarts.</p>
+        </li>
+        <li>
+          <b>Create your Navidrome account</b>
+          <p>In a browser on your computer, open <code>http://audex-pi.local:4533</code> and create the first user; it becomes the admin. Navidrome then scans your music folder on its own, so albums appear within a few minutes.</p>
+        </li>
+        <li>
+          <b>Give the Pi a fixed address</b>
+          <p>Find the Pi's address with <code>hostname -I</code>, then reserve it in your router's settings (often called a DHCP reservation or static lease). That way the address you give Audex never changes.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="guide-section" id="connect-audex">
+      <h2>3. Connect Audex</h2>
+      <ol class="faq-steps">
+        <li>
+          <b>Add the server</b>
+          <p>In Audex, open <b>Settings → Media servers → Add a server</b> and choose <b>Subsonic / OpenSubsonic / Navidrome</b>. (Jellyfin, Emby and Kodi servers show up by themselves under <b>On this network</b>; Navidrome doesn't announce itself, so you add it by address.)</p>
+        </li>
+        <li>
+          <b>Enter its address and your login</b>
+          <p>Use the Pi's address and port, for example <code>http://192.168.1.50:4533</code>, with the Navidrome username and password you just created. Audex tests the connection before saving, so you'll know straight away that it works.</p>
+        </li>
+        <li>
+          <b>Turn on Stream original quality</b>
+          <p>In the same form (or later, on the server's page under Settings → Media servers), turn on <b>Stream original quality</b>. The Pi then sends your files as they are instead of converting them, which keeps it cool and quick. It uses more mobile data away from home, so leave it off if your data plan is small.</p>
+        </li>
+        <li>
+          <b>Play something</b>
+          <p>Pick the server from the source switcher at the top of the Library. Albums, Artists, Genres and Playlists appear just as Navidrome organises them, and anything can be downloaded for offline listening.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="guide-section" id="away-from-home">
+      <h2>Optional: listen away from home</h2>
+      <p>Your Pi is only reachable on your home network until you add a way in from outside. The simplest safe one is a private VPN such as <b>Tailscale</b>, which needs no changes to your router:</p>
+      <ol class="faq-steps">
+        <li>
+          <b>Install Tailscale on the Pi and sign in</b>
+          <pre class="code-block"><code>curl -fsSL https://tailscale.com/install.sh | sh
+sudo tailscale up</code></pre>
+          <p>Open the link it prints to sign in, then install the Tailscale app on your phone with the same account.</p>
+          <a class="step-link" href="https://tailscale.com/download" target="_blank" rel="noopener">Get Tailscale</a>
+        </li>
+        <li>
+          <b>Add it as the server's second address</b>
+          <p>Edit the server in Audex and put the Pi's Tailscale address (it starts with <code>100.</code>, plus <code>:4533</code>) in <b>Second address (optional)</b>. At home Audex uses your home address; when that can't be reached, it switches to the second one by itself.</p>
+        </li>
+      </ol>
+      <div class="faq-note"><b>Using HTTPS with a self-signed certificate?</b> Audex shows the certificate's details and SHA-256 fingerprint the first time, so you can trust exactly that certificate. If it ever changes, Audex stops and asks before connecting again.</div>
+    </section>
+
+    <section class="guide-section" id="troubleshooting">
+      <h2>If something isn't working</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Navidrome opens, but the library is empty<span class="plus"></span></summary>
+          <div class="faq-a">Navidrome can't read the music folder. Give your user ownership of it, then restart Navidrome:<pre class="code-block"><code>sudo chown -R 1000:1000 ~/music ~/navidrome/data
+cd ~/navidrome &amp;&amp; docker compose restart</code></pre></div>
+        </details>
+        <details class="faq-item">
+          <summary>Audex can't connect to the server<span class="plus"></span></summary>
+          <div class="faq-a">Check that your phone is on the same Wi-Fi as the Pi, and that the address in Audex includes <code>:4533</code>. On the Pi, <code>docker compose ps</code> (inside <code>~/navidrome</code>) should show Navidrome as running. If the Pi's address changed, reserve it in your router as in step 2.</div>
+        </details>
+        <details class="faq-item">
+          <summary>How do I update Navidrome later?<span class="plus"></span></summary>
+          <div class="faq-a">On the Pi:<pre class="code-block"><code>cd ~/navidrome
+docker compose pull &amp;&amp; docker compose up -d</code></pre>Your account and settings live in <code>~/navidrome/data</code> and are kept.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I use Jellyfin on the Pi instead?<span class="plus"></span></summary>
+          <div class="faq-a">Yes. Jellyfin runs well on a Pi 4 or 5 for music, and Audex connects to it the same way (port <code>8096</code>), usually finding it under <b>On this network</b> by itself. For video, keep files in formats your devices can play directly, since a Pi can't convert video quickly. Navidrome is the lighter choice if you only need music.</div>
+        </details>
+      </div>
+      <p style="margin-top:20px">Still stuck? <a class="inline" href="mailto:support@shafralabs.com">Email support@shafralabs.com</a> — a real person reads every message.</p>
+    </section>
+  </article>
+</main>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <img class="mark" src="/icon.svg" alt="">
+          <span class="word">Aude<span class="x">x</span></span>
+        </a>
+        <p>The audio player for what you already run. Made by Shafra Labs.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="/#servers">Media servers</a></li>
+          <li><a href="/#files">Files &amp; books</a></li>
+          <li><a href="/#sound">Sound</a></li>
+          <li><a href="/#everywhere">Everywhere</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/help/">Help Center</a></li>
+          <li><a href="/help/raspberry-pi/">Raspberry Pi guide</a></li>
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a href="/delete-account/">Delete account &amp; data</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="https://shafralabs.com">Shafra Labs</a></li>
+          <li><a href="mailto:support@shafralabs.com">Contact support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Shafra Labs</span>
+      <span>Audex is not affiliated with Jellyfin, Plex, Emby, Subsonic, Navidrome, Audiobookshelf, Kodi, or Raspberry Pi Ltd. Raspberry Pi is a trademark of Raspberry Pi Ltd.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/site.js?v=20"></script>
+</body>
+</html>

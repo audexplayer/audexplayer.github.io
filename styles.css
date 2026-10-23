@@ -469,7 +469,9 @@ section{ padding:var(--space-9) 0; }
   border-radius:50%; background:var(--coral); color:#fff; font:700 12px var(--font);
   display:flex; align-items:center; justify-content:center;
 }
-.faq-steps b{ display:block; font-size:14.5px; color:var(--on-bg); }
+.faq-steps li > b{ display:block; font-size:14.5px; color:var(--on-bg); }
+/* Bold words inside a step's text stay inline; only the step's own title (li > b) is a block. */
+.faq-steps p b{ color:var(--on-bg); }
 .faq-steps p{ margin:4px 0 0; font-size:13.5px; color:var(--on-bg-muted); }
 .faq-steps .step-link{ display:inline-block; margin-top:6px; font:600 13px var(--font); color:var(--coral); }
 .faq-steps .step-link::after{ content:" →"; }
@@ -599,3 +601,76 @@ section{ padding:var(--space-9) 0; }
 
 .phone-screen.shot{ padding:0; aspect-ratio:1/2; }
 .phone-screen.shot img{ display:block; width:100%; height:100%; object-fit:cover; }
+
+/* ============================================================
+   Home-server panel (Servers section) and language card (Everywhere)
+   ============================================================ */
+.homelab-card{
+  margin-top:var(--space-6); padding:20px 22px;
+  background:linear-gradient(160deg, color-mix(in oklab, var(--coral) 12%, var(--surface)), var(--surface));
+  border:1px solid color-mix(in oklab, var(--coral) 30%, transparent); border-radius:var(--radius-elevated);
+}
+.homelab-title{ font:700 12px var(--font); letter-spacing:.08em; text-transform:uppercase; color:var(--coral); margin-bottom:12px; }
+.homelab-list{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:12px 20px; }
+@media (max-width:560px){ .homelab-list{ grid-template-columns:1fr; } }
+.homelab-list li{ font:500 13.5px/1.5 var(--font); color:var(--on-bg-muted); }
+.homelab-list b{ display:block; color:var(--on-bg); font-size:14px; margin-bottom:2px; }
+.homelab-link{ display:inline-block; margin-top:16px; font:700 14px var(--font); color:var(--coral); }
+.homelab-link::after{ content:" →"; }
+
+.lang-card{
+  margin-top:14px; padding:22px 24px; display:flex; align-items:center; justify-content:space-between; gap:20px 32px; flex-wrap:wrap;
+  background:var(--bg); border:1px solid var(--outline); border-radius:var(--radius-elevated);
+}
+.lang-card > div:first-child{ flex:1 1 360px; }
+.lang-card h3{ font-size:17px; margin-bottom:6px; }
+.lang-card p{ font-size:14px; line-height:1.55; max-width:62ch; }
+.lang-chips{ flex:0 1 auto; }
+
+/* ============================================================
+   Guide pages (Help Center articles, e.g. the Raspberry Pi guide)
+   ============================================================ */
+.guide-shell{ max-width:820px; margin:0 auto; padding:var(--space-8) 0 var(--space-9); }
+.guide-shell h1{ font-size:clamp(28px,4vw,42px); text-wrap:balance; }
+.guide-shell .lede{ margin-top:12px; }
+.guide-meta{ display:flex; flex-wrap:wrap; gap:8px; margin-top:var(--space-5); }
+.guide-section{ margin-top:var(--space-8); padding:0; scroll-margin-top:96px; }
+.guide-section h2{ font-size:23px; margin-bottom:8px; }
+.guide-section > p{ font-size:15px; line-height:1.65; max-width:68ch; margin-bottom:12px; }
+.guide-section .faq-steps p, .guide-section .faq-note{ line-height:1.6; }
+.guide-list{ margin:10px 0 0; padding-left:20px; }
+.guide-list li{ color:var(--on-bg-muted); font-size:14.5px; margin:6px 0; line-height:1.55; }
+.guide-list b{ color:var(--on-bg); }
+.guide-shell a.inline, .faq-a a.inline{ color:var(--coral); font-weight:700; }
+.guide-shell code, .faq-a code{
+  font:500 13px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; color:var(--on-bg);
+  background:var(--surface-variant-2); border-radius:6px; padding:1px 6px;
+}
+.code-block{
+  margin:10px 0 2px; padding:12px 14px; overflow-x:auto;
+  background:var(--bg); border:1px solid var(--outline-strong); border-radius:10px;
+  font:500 13px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; color:var(--on-bg);
+  white-space:pre; tab-size:2;
+}
+.code-block code{ background:none; padding:0; font:inherit; }
+.code-label{ display:block; margin-top:10px; font:600 12px var(--font); color:var(--on-bg-muted); }
+
+/* Click-to-load YouTube player: nothing loads from YouTube until the reader presses play. */
+.video-facade{
+  position:relative; aspect-ratio:16/9; width:100%; margin-top:var(--space-4);
+  border-radius:var(--radius-elevated); overflow:hidden; border:1px solid var(--outline-strong);
+  background:radial-gradient(70% 90% at 30% 20%, color-mix(in oklab, var(--coral) 30%, #151318), #0B0A0D 75%);
+}
+.video-facade button{
+  all:unset; position:absolute; inset:0; cursor:pointer; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;
+  padding:24px; text-align:center; color:#F4F3F6;
+}
+.video-facade button:focus-visible{ outline:3px solid var(--coral); outline-offset:-3px; }
+.video-facade .play{ width:68px; height:68px; border-radius:50%; background:var(--coral); display:flex; align-items:center; justify-content:center; box-shadow:0 12px 30px -10px rgba(0,0,0,.6); transition:transform .15s ease; }
+.video-facade button:hover .play{ transform:scale(1.06); }
+.video-facade .play svg{ width:26px; height:26px; margin-left:4px; }
+.video-facade .vt{ font:700 clamp(15px,2.2vw,19px)/1.35 var(--font); max-width:36ch; }
+.video-facade .vs{ font:500 13px var(--font); color:#B9B6C2; }
+.video-facade iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+.video-caption{ margin-top:10px; font-size:13px; line-height:1.55; }
+.video-caption a{ color:var(--coral); font-weight:600; }

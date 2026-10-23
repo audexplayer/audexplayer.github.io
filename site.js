@@ -52,4 +52,23 @@
       }
     });
   }
+
+  // ---- click-to-load YouTube player: the iframe (and with it any request to YouTube) is only
+  // created once the reader presses play, on the privacy-enhanced youtube-nocookie.com domain ----
+  document.querySelectorAll(".video-facade[data-video-id]").forEach(function (box) {
+    var button = box.querySelector("button");
+    if (!button) return;
+    button.addEventListener("click", function () {
+      var iframe = document.createElement("iframe");
+      var start = box.getAttribute("data-start");
+      iframe.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(box.getAttribute("data-video-id")) +
+        "?autoplay=1&rel=0" + (start ? "&start=" + encodeURIComponent(start) : "");
+      iframe.title = box.getAttribute("data-title") || "YouTube video";
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      iframe.allowFullscreen = true;
+      box.replaceChildren(iframe);
+      iframe.focus();
+    });
+  });
 })();
